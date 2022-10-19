@@ -5,13 +5,23 @@ triggers
 {
     pollSCM ('* * * * *')
 }
-stages{
+stages
+{
     stage ('pull from vcs')
     {
-        steps{
-            git url: ''
+        steps
+        {
+            git url: 'https://github.com/Sufiyan779/js-e2e-express-server.git',
+            branch: 'javaScript'
         }
 
+    }
+    stage('build')
+    {
+     steps
+     {
+        sh 'nvm package'
+     }
     }
 }
 }
